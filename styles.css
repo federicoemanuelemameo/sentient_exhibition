@@ -1,0 +1,305 @@
+/* Main image in index */
+#main-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    background: #000;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Original styles for variant pages - NOT for index.html */
+.variant-prompt-history,
+#discarded-history {
+    width: 20vw;
+    min-width: 180px;
+    background: #f5f5f5;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.variant-prompt-history {
+    border-right: 2px solid #ddd;
+    text-align: left;
+}
+
+#discarded-history {
+    border-left: 2px solid #ddd;
+    text-align: left;
+}
+
+#main-content {
+    flex: 1;
+    padding: 30px 10px 10px 10px;
+    text-align: center;
+    min-width: 350px;
+}
+
+.image-choice {
+    display: inline-block;
+    margin: 20px;
+    vertical-align: top;
+}
+
+img {
+    width: 1080px;
+    height: 1920px;
+
+    display: block;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#prompt-section {
+    margin-bottom: 30px;
+}
+
+#prompt-input {
+    width: 400px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+.history-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.history-list {
+    font-size: 14px;
+    line-height: 1.5;
+    padding-left: 0;
+    list-style: none;
+}
+
+.history-list li {
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 4px;
+    padding: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.modification-description {
+    margin-top: 30px;
+    font-size: 16px;
+    background: #f9f9f9;
+    border-radius: 6px;
+    padding: 18px;
+    display: inline-block;
+    min-width: 60%;
+}
+
+.variant-choice {
+    display: inline-block;
+    width: 40%;
+    margin: 10px;
+    vertical-align: top;
+    background: #f0f0f0;
+    border-radius: 6px;
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+#initial-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+body {
+    background: linear-gradient(120deg, #f8fafc 0%, #e0e7ef 100%);
+}
+
+.start-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    max-width: 420px;
+    margin: 60px auto 0 auto;
+    padding: 38px 28px 32px 28px;
+    text-align: center;
+}
+
+.start-title {
+    font-size: 2em;
+    color: #2a3a4b;
+    margin-bottom: 18px;
+}
+
+.start-img {
+    margin-bottom: 28px;
+}
+
+.start-btn {
+    margin-top: 18px;
+    background: #2a7be4;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    padding: 12px 32px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.start-btn:hover {
+    background: #195bb5;
+}
+
+.prompt-history-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    width: calc(100% - 120px);
+    margin: 30px 60px;
+    padding: 28px;
+}
+
+.prompt-history-title {
+    font-size: 1.5em;
+    color: #2a3a4b;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.prompt-history-toggle {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.toggle-btn {
+    background: #6c757d;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.toggle-btn:hover {
+    background: #5a6268;
+}
+
+.prompt-entry {
+    background: #f8f9fa;
+    border-left: 4px solid #007bff;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.prompt-entry-main {
+    flex: 1;
+}
+
+.prompt-entry-header {
+    font-weight: bold;
+    color: #2a3a4b;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.prompt-entry-type {
+    background: #007bff;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8em;
+}
+
+.prompt-entry-content {
+    color: #2c3e50;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.95em;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    background: white;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+}
+
+.prompt-entry-timestamp {
+    font-size: 0.8em;
+    color: #6c757d;
+}
+
+.prompt-entry-images {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 300px;
+    max-width: 400px;
+}
+
+.prompt-entry-image {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #dee2e6;
+}
+
+.prompt-entry-image img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.choice-indicator {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.choice-indicator.chosen {
+    background-color: #28a745;
+}
+
+.choice-indicator.not-chosen {
+    background-color: #dc3545;
+}
+
+.variant-label {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7em;
+    font-weight: bold;
+}
