@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Variant 2 Image</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="variant.css">
+</head>
+
+<body>
+    <div id="iteration-number" class="iteration-number">#0001</div>
+    <div id="variant-text" class="variant-text"></div>
+    <div id="image-container" class="variant-img"></div>
+    <script>
+        // Show the text and image of variant 2 saved in localStorage
+        const variant2 = localStorage.getItem('variant2_text');
+        function updateVariant2View() {
+            const variant2Text = localStorage.getItem('variant2_text') || '';
+            const img2 = localStorage.getItem('variant2_img');
+
+            console.log('🔍 VARIANT2: Displaying summary text:', variant2Text);
+
+            // Update iteration number based on history length
+            const history = JSON.parse(localStorage.getItem('history') || '[]');
+            const iterationNumber = history.length + 1;
+            const formattedNumber = iterationNumber.toString().padStart(4, '0');
+            document.getElementById('iteration-number').textContent = `#${formattedNumber}`;
+
+            // Show the summary text (which includes instruction)
+            document.getElementById('variant-text').innerHTML = variant2Text.replace(/\n/g, '<br>');
+            if (img2) {
+                document.getElementById('image-container').innerHTML = `<img src="${img2}" alt="Variant 2 Image">`;
+            } else {
+                document.getElementById('image-container').innerHTML = `
+                    <div class="loading-container">
+                        <div class="loading-text">Mutation incoming...</div>
+                        <div class="loading-dots">
+                            <div class="loading-dot"></div>
+                            <div class="loading-dot"></div>
+                            <div class="loading-dot"></div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        updateVariant2View();
+
+        // Check for updates every few seconds in case instruction gets saved later
+        setInterval(() => {
+            updateVariant2View();
+        }, 3000);
+
+        // Function to show vote animation
+        function showVoteAnimation() {
+            // Remove any existing animation
+            const existingFeedback = document.querySelector('.vote-feedback');
+            if (existingFeedback) {
+                existingFeedback.remove();
+            }
+
+            // Create new animation element
+            const feedback = document.createElement('div');
+            feedback.className = 'vote-feedback variant2';
+            feedback.textContent = '+1';
+            document.body.appendChild(feedback);
+
+            // Remove the element after animation completes
+            setTimeout(() => {
+                if (feedback.parentNode) {
+                    feedback.parentNode.removeChild(feedback);
+                }
+            }, 1800);
+        }
+
+        // Listen for vote events from main page
+        window.addEventListener('storage', function (e) {
+            if (e.key === 'variant2_img' || e.key === 'variant2_desc' || e.key === 'variant2_text' || e.key === 'history') {
+                updateVariant2View();
+            }
+
+            // Check for vote trigger
+            if (e.key === 'variant2_vote_trigger') {
+                showVoteAnimation();
+                // Clear the trigger
+                localStorage.removeItem('variant2_vote_trigger');
+            }
+        });
+
+        // Also listen for custom events (for same-page communication)
+        window.addEventListener('message', function (e) {
+            if (e.data && e.data.type === 'variant2_vote') {
+                showVoteAnimation();
+            }
+        });
+
+        // DEBUG: Test button (remove this in production)
+        document.addEventListener('keydown', function (e) {
+            if (e.key === '2') {
+                showVoteAnimation();
+            }
+        });
+    </script>
+</body>
+
+</html>

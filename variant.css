@@ -1,0 +1,282 @@
+        @font-face {
+            font-family: 'UbuntuMono';
+            src: url('UbuntuMono-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        html,
+        body {
+            overflow: hidden;
+        }
+
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        body {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .variant-text {
+            font-family: 'UbuntuMono', 'Courier New', monospace;
+            font-size: 2.2em;
+            text-align: left;
+            position: fixed;
+            bottom: 50px;
+            left: 40px;
+            right: 40px;
+            width: auto;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            z-index: 10;
+            padding: 30px 40px 30px 40px;
+            line-height: 1.3;
+            min-height: calc(1.3em * 6 + 60px);
+            /* 6 lines + padding for text + instruction */
+            overflow-y: auto;
+            /* Allow scrolling if text is too long */
+            box-sizing: border-box;
+
+            /* White text on black background */
+            color: white;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+        }
+
+        .iteration-number {
+            font-family: 'UbuntuMono', 'Courier New', monospace;
+            font-size: 1.5em;
+            text-align: left;
+            position: fixed;
+            top: 40px;
+            left: 40px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            z-index: 10;
+            color: white;
+            mix-blend-mode: difference;
+            filter: contrast(2) brightness(1.5);
+        }
+
+        .variant-img {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: calc(100vh - 120px);
+            width: 100vw;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .variant-img img {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            /* Changed from contain to cover to fill the entire screen */
+            border-radius: 0;
+            box-shadow: none;
+            background: #000;
+            display: block;
+        }
+
+        .home-btn {
+            position: fixed;
+            right: 40px;
+            bottom: 40px;
+            background: rgba(34, 34, 34, 0.9);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            /* Increased for large monitors */
+            padding: 12px 24px;
+            cursor: pointer;
+            opacity: 0.8;
+            z-index: 20;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+            transition: all 0.2s;
+            backdrop-filter: blur(10px);
+        }
+
+        .home-btn:hover {
+            opacity: 1;
+        }
+
+        /* Loading animation */
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #fff;
+        }
+
+        .loading-text {
+            font-family: 'UbuntuMono', 'Courier New', monospace;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #ccc;
+            letter-spacing: 0.02em;
+        }
+
+        .loading-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .loading-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        .loading-dot:nth-child(1) {
+            animation-delay: -0.3s;
+        }
+
+        .loading-dot:nth-child(2) {
+            animation-delay: -0.15s;
+        }
+
+        .loading-dot:nth-child(3) {
+            animation-delay: 0s;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+
+            40% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        /* Optimizations for vertical monitors 2160x3840 */
+        @media screen and (min-width: 2000px) and (min-height: 3000px) {
+            .variant-text {
+                font-size: 3em;
+                /* Even larger for 4K vertical monitors */
+                font-weight: 500;
+                /* Slightly bolder for large screens */
+                bottom: 80px;
+                left: 60px;
+                right: 60px;
+                padding: 40px 60px 40px 60px;
+                letter-spacing: 0.03em;
+                /* Increased spacing for large monitors */
+                min-height: calc(1.3em * 6 + 80px);
+                /* 6 lines + padding for large screens */
+                border-radius: 16px;
+                box-shadow: 0 12px 48px rgba(0, 0, 0, 0.7);
+            }
+
+            .iteration-number {
+                font-size: 2em;
+                top: 60px;
+                left: 60px;
+            }
+
+            .home-btn {
+                font-size: 1.3em;
+                padding: 16px 32px;
+                right: 60px;
+                bottom: 60px;
+            }
+        }
+
+        /* Vote feedback animation */
+        .vote-feedback {
+            font-family: 'UbuntuMono', 'Courier New', monospace;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 8em;
+            font-weight: bold;
+            color: white;
+            mix-blend-mode: difference;
+            filter: contrast(2) brightness(1.5);
+            z-index: 100;
+            pointer-events: none;
+            opacity: 0;
+            animation: voteAnimation 1.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        }
+
+        @keyframes voteAnimation {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+
+            15% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(30%, -120%) scale(0.6);
+            }
+        }
+
+        /* Alternative mix-blend-mode options (uncomment to try):
+        
+        Option 1 - Exclusion (softer contrast):
+        mix-blend-mode: exclusion;
+        filter: contrast(1.8) brightness(1.3);
+        
+        Option 2 - Overlay (adapts to underlying colors):
+        mix-blend-mode: overlay;
+        filter: contrast(2.5) brightness(2);
+        
+        Option 3 - Hard-light (strong contrast):
+        mix-blend-mode: hard-light;
+        filter: contrast(3) brightness(1.8);
+        
+        */
+
+
+
+        /* Hide scrollbar in all browsers */
+        html {
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* Internet Explorer 10+ */
+        }
+
+        html::-webkit-scrollbar {
+            /* WebKit */
+            display: none;
+        }
